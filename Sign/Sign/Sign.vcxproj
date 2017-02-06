@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3C5478FA-79E3-40F9-8C88-1F26C10CA664}</ProjectGuid>
-    <RootNamespace>Font</RootNamespace>
+    <ProjectGuid>{223F22AD-BF94-4B2C-B6FD-0ADE1E27A052}</ProjectGuid>
+    <RootNamespace>Sign</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -69,27 +69,9 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Allegro_AddonImage>true</Allegro_AddonImage>
     <Allegro_AddonPrimitives>true</Allegro_AddonPrimitives>
-    <Allegro_AddonImage>
-    </Allegro_AddonImage>
-    <Allegro_AddonTTF>
-    </Allegro_AddonTTF>
-    <Allegro_AddonAudio>
-    </Allegro_AddonAudio>
-    <Allegro_AddonAcodec>
-    </Allegro_AddonAcodec>
-    <Allegro_AddonPhysfs>
-    </Allegro_AddonPhysfs>
-    <Allegro_AddonDialog>
-    </Allegro_AddonDialog>
-    <Allegro_AddonMemfile>
-    </Allegro_AddonMemfile>
     <Allegro_AddonFont>true</Allegro_AddonFont>
-    <Allegro_AddonColor>
-    </Allegro_AddonColor>
-    <Allegro_AddonVideo>
-    </Allegro_AddonVideo>
-    <Allegro_LibraryType>DynamicDebug</Allegro_LibraryType>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -135,7 +117,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="font.cpp" />
+    <ClCompile Include="sign.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
