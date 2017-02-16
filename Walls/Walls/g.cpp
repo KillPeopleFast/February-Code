@@ -184,10 +184,11 @@ int main()
 			//the algorithm above just changes the x and y coordinates
 			//here's where the bitmap is actually drawn somewhere else
 			al_draw_bitmap(player, player_x, player_y, 0);
-
+			
 			//wall 1
-			al_draw_filled_rectangle(100, 100, 300, 200, al_map_rgb(200, 100, 0));
-			al_draw_filled_rectangle(600, 300, 150, 50, al_map_rgb(100, 200, 150));
+			al_draw_filled_rectangle(200, 100, 100, 400, al_map_rgb(200, 100, 0));
+			al_draw_filled_rectangle(400, 100, 400, 500, al_map_rgb(200, 100, 0));
+		
 			al_flip_display();
 		}
 	}
