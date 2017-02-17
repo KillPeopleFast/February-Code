@@ -78,30 +78,38 @@ int main()
 			//if the up button is pressed AND we're still below the top wall,
 			//move the box "up" by 4 pixels
 			if ((key[0] && player_y >= 0) &&
-				!(player_x > 70 && player_x <298 && player_y <202 && player_y>194))
+
+				!(player_x > 69 && player_x <200 && player_y <400 && player_y>390))
 
 			{
 				player_y -= 2.0;
 			}
 			//if the down button is pressed AND we're still above the bottom wall
 			//move the box "down" by 4 pixels
-			if ((key[1] && player_y <= 480 - 32)&&
-			!(player_x>66 && player_x<298 && player_y>66 && player_y<76))
+			if ((key[1] && player_y <= 480 - 32) &&
+				!(player_x>69 && player_x<200 && player_y>66 && player_y<76) &&
+				!(player_x >238 && player_x<380 && player_y>68 && player_y<78)
+
+
+				)
 			{
 				player_y += 2.0;
 			}
 			//if the left button is pressed AND we're still right of the left wall
 			//move the box left by 4 pixels
-			if (key[2] && player_x >= 0)
+			if ((key[2] && player_x >= 0) &&
+				!(player_y > 69 && player_y <400 && player_x <200 && player_x>194))
+
 
 			{
 				player_x -= 2.0;
 			}
 
-			//if the left button is pressed AND we're still left of the right wall
+			//if the right button is pressed AND we're still left of the right wall
 			//move the box right by 4 pixels
 			if ((key[3] && player_x <= 640 - 32) &&
-				!(player_x > 66 && player_x <78 && player_y >66 && player_y<198)) {
+				!(player_x > 69 && player_x <79 && player_y >66 && player_y<400)) {
+
 				player_x += 2.0;
 			}
 
@@ -184,11 +192,12 @@ int main()
 			//the algorithm above just changes the x and y coordinates
 			//here's where the bitmap is actually drawn somewhere else
 			al_draw_bitmap(player, player_x, player_y, 0);
-			
+
 			//wall 1
 			al_draw_filled_rectangle(200, 100, 100, 400, al_map_rgb(200, 100, 0));
-			al_draw_filled_rectangle(400, 100, 400, 500, al_map_rgb(200, 100, 0));
-		
+			al_draw_filled_rectangle(450, 100, 550, 400, al_map_rgb(200, 100, 0));
+			al_draw_filled_rectangle(270, 100, 380, 400, al_map_rgb(200, 100, 0));
+
 			al_flip_display();
 		}
 	}
