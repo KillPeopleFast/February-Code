@@ -5,7 +5,7 @@
 using namespace std;
 int main() {
 	
-	char input = 'a';
+	char input = 'a';//dummy value
 	while (input != 'q') {
 		cout << "Would you like a cookie?" << endl;
 		cin >> input;
