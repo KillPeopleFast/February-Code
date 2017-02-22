@@ -79,7 +79,9 @@ int main()
 			//move the box "up" by 4 pixels
 			if ((key[0] && player_y >= 0) &&
 
-				!(player_x > 69 && player_x <200 && player_y <400 && player_y>390))
+				!(player_x > 69 && player_x <200 && player_y <400 && player_y>390) &&
+				!(player_x > 238 && player_x <382 && player_y <400 && player_y>390) &&
+				!(player_x > 420 && player_x <550 && player_y <400 && player_y>390))
 
 			{
 				player_y -= 2.0;
@@ -88,17 +90,22 @@ int main()
 			//move the box "down" by 4 pixels
 			if ((key[1] && player_y <= 480 - 32) &&
 				!(player_x>69 && player_x<200 && player_y>66 && player_y<76) &&
-				!(player_x >238 && player_x<380 && player_y>68 && player_y<78)
+				!(player_x >238 && player_x<380 && player_y>68 && player_y<78) &&
+				!(player_x > 420 && player_x <550 && player_y <68 && player_y>78) &&
+				!(player_x > 418 && player_x <550 && player_y >68 && player_y<78))
 
-
-				)
 			{
 				player_y += 2.0;
 			}
 			//if the left button is pressed AND we're still right of the left wall
 			//move the box left by 4 pixels
 			if ((key[2] && player_x >= 0) &&
-				!(player_y > 69 && player_y <400 && player_x <200 && player_x>194))
+
+				!(player_y > 69 && player_y <400 && player_x <200 && player_x>194) &&
+				!(player_x<382 && player_x>372 && player_y>66 && player_y<400)&&//second wall
+				!(player_x<550 && player_x>540 && player_y>68 && player_y<400)
+
+				)
 
 
 			{
@@ -108,7 +115,9 @@ int main()
 			//if the right button is pressed AND we're still left of the right wall
 			//move the box right by 4 pixels
 			if ((key[3] && player_x <= 640 - 32) &&
-				!(player_x > 69 && player_x <79 && player_y >66 && player_y<400)) {
+				!(player_x > 69 && player_x <79 && player_y >66 && player_y<400) &&
+				!(player_x >240 && player_x <250 && player_y >68 && player_y<400) &&
+				!(player_x >420 && player_x <430 && player_y >68 && player_y<400)) {
 
 				player_x += 2.0;
 			}
