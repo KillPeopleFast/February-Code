@@ -1,6 +1,8 @@
 #include <allegro5/allegro.h>
 #include<allegro5/allegro_primitives.h>
 #include <iostream>
+#include<allegro5/allegro_font.h>
+#include<allegro5/allegro_ttf.h>
 using namespace std;
 
 
@@ -10,7 +12,12 @@ int main()
 	ALLEGRO_EVENT_QUEUE *event_queue = NULL;
 	ALLEGRO_TIMER *timer = NULL;
 	ALLEGRO_BITMAP *player = NULL;
+	ALLEGRO_FONT *font = NULL;
 
+	int lives = 3;
+	int speed = 4;
+	bool collect = false;
+	int time = 1000;
 	//these two variables hold the x and y positions of the player
 	//initalize these variables to where you want your player to start
 	float player_x = 50;
@@ -31,6 +38,10 @@ int main()
 
 	//get the keyboard ready to use
 	al_install_keyboard();
+
+	al_init_font_addon();
+	
+	al_init_ttf_addon();
 
 	timer = al_create_timer(.02);
 
@@ -84,18 +95,18 @@ int main()
 				!(player_x > 420 && player_x <550 && player_y <400 && player_y>390))
 
 			{
-				player_y -= 2.0;
+				player_y -= 7.0;
 			}
 			//if the down button is pressed AND we're still above the bottom wall
 			//move the box "down" by 4 pixels
 			if ((key[1] && player_y <= 480 - 32) &&
-				!(player_x>69 && player_x<200 && player_y>66 && player_y<76) &&
+				!(player_x>69 && player_x<200 && player_y>68 && player_y<78) &&
 				!(player_x >238 && player_x<380 && player_y>68 && player_y<78) &&
 				!(player_x > 420 && player_x <550 && player_y <68 && player_y>78) &&
 				!(player_x > 418 && player_x <550 && player_y >68 && player_y<78))
 
 			{
-				player_y += 2.0;
+				player_y += 7.0;
 			}
 			//if the left button is pressed AND we're still right of the left wall
 			//move the box left by 4 pixels
@@ -109,7 +120,7 @@ int main()
 
 
 			{
-				player_x -= 2.0;
+				player_x -= 7.0;
 			}
 
 			//if the right button is pressed AND we're still left of the right wall
@@ -119,9 +130,32 @@ int main()
 				!(player_x >240 && player_x <250 && player_y >68 && player_y<400) &&
 				!(player_x >420 && player_x <430 && player_y >68 && player_y<400)) {
 
-				player_x += 2.0;
+				player_x += 7.0;
 			}
+			if (player_x > 208 && player_x < 260 && player_y >-2 && player_y < 58) {//small wall1
 
+				player_x = 50;
+				player_y = 50;
+				lives--;
+			}
+			else if (player_x > 388 && player_x < 418 && player_y >248 && player_y < 300) {//small wall2
+
+				player_x = 50;
+				player_y = 50;
+				lives--;
+			}
+			else if (player_x > 420 && player_x < 430 && player_y >68 && player_y < 400) {
+
+				player_x = 50;
+				player_y = 50;
+				lives--;
+			}
+				//nasty messages
+				//devestating sound
+				
+
+
+			
 			//redraw at every tick of the timer
 			redraw = true;
 		}
@@ -203,10 +237,12 @@ int main()
 			al_draw_bitmap(player, player_x, player_y, 0);
 
 			//wall 1
-			al_draw_filled_rectangle(200, 100, 100, 400, al_map_rgb(200, 100, 0));
-			al_draw_filled_rectangle(450, 100, 550, 400, al_map_rgb(200, 100, 0));
-			al_draw_filled_rectangle(270, 100, 380, 400, al_map_rgb(200, 100, 0));
-
+			al_draw_filled_rectangle(200, 100, 100, 400, al_map_rgb(200, 100, 0));//wall1
+			al_draw_filled_rectangle(450, 100, 550, 400, al_map_rgb(200, 100, 0));//wall2
+			al_draw_filled_rectangle(270, 100, 380, 400, al_map_rgb(200, 100, 0));//wall3
+			al_draw_filled_rectangle(260, 0, 240, 60, al_map_rgb(200, 100, 0));//small wall1
+			al_draw_filled_rectangle(420, 280, 550, 300, al_map_rgb(200, 100, 0));//small wall2
+			al_draw_filled_rectangle(420, 380, 550, 400, al_map_rgb(200, 100, 0));//small wall3
 			al_flip_display();
 		}
 	}
